@@ -1,5 +1,6 @@
 import json
 import re
+import requests
 from collections import defaultdict
 
 filtered_scripts = ['scripts/common.js', 'scripts/global.js', 'scripts/store/invalidate_cache.js']
@@ -8,8 +9,8 @@ def url_to_regex(url):
     return re.escape(url).replace('\*', '.*')
 
 def convert_to_js(manifest_file):
-    with open(manifest_file, 'r') as f:
-        data = json.load(f)
+    response = requests.get(manifest_file)
+    data = json.loads(response.text)
 
     content_scripts = data['content_scripts']
     combined_matches = defaultdict(list)
@@ -33,4 +34,4 @@ def convert_to_js(manifest_file):
             print('    scripts.push("{}");'.format(js_file))
         print('}\n')
 
-convert_to_js('manifest.json')
+convert_to_js('https://cdn.jsdelivr.net/gh/SteamDatabase/BrowserExtension@latest/manifest.json')
