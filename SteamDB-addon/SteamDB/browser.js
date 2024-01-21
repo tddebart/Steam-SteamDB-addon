@@ -1,3 +1,5 @@
+let cdn = "https://cdn.jsdelivr.net/gh/SteamDatabase/BrowserExtension@latest/"
+
 browser = {};
 browser.storage = {};
 browser.storage.sync = {};
@@ -8,16 +10,40 @@ browser.storage.sync.get = async function (items) {
 }
 
 browser.i18n = {};
+const langKey = "steamDB_en";
+async function getLang() {
+    if (sessionStorage.getItem(langKey) === null) {
+        console.log('[SteamDB addon] getting EN lang');
 
-browser.i18n.getMessage = function (message, substitutions) {
-    //TODO: use translation file instead of returning translation id's
-    return message;
+        const response = await fetch(cdn + "_locales/en/messages.json");
+        sessionStorage.setItem(langKey, JSON.stringify(await response.json()));
+    }
+}
+getLang();
+
+browser.i18n.getMessage = function (messageKey, substitutions) {
+    if (!Array.isArray(substitutions)) {
+        substitutions = [substitutions];
+    }
+
+    let lang = JSON.parse(sessionStorage.getItem(langKey));
+    if (lang === null || Object.keys(lang).length === 0) {
+        console.error('SteamDB lang file not loaded in.');
+        return messageKey;
+    }
+
+    let messageTemplate = lang[messageKey].message;
+    substitutions.forEach((substitution, index) => {
+        messageTemplate = messageTemplate.replace(`$${index + 1}`, substitution);
+    });
+
+    return messageTemplate;
 }
 
 browser.runtime = {};
 
 browser.runtime.getURL = function (res) {
-    return "https://cdn.jsdelivr.net/gh/SteamDatabase/BrowserExtension@latest/" + res;
+    return cdn + res;
 }
 
 let oldCreateElement = document.createElement.bind(document);
