@@ -17,7 +17,7 @@ An addon for the steam client that integrates the SteamDB browser addon (https:/
 ### Add to existing skin
 5. Open your skin folder
 6. Extract only the SteamDB folder from the zip, without the root webkit.js and webkit.css
-7. Add ```import "./SteamDB/webkit.js";``` to the top of your skin webkit.js file
-8. Add ```@import "./SteamDB/webkit.css";``` to the top of your skin webkit.css file
+7. Add ```import "./SteamDB/webkit.js";``` to the top of your skin `webkit.js` file
+8. Add ```@import "./SteamDB/webkit.css";``` to the top of your skin `webkit.css` file
 9. Done, open a steam store page and you should now see two extra buttons at the top, if not then try to install again
 ![Steam store successful](./Images/steam_store.png)
