@@ -21,3 +21,7 @@ An addon for the steam client that integrates the SteamDB browser addon (https:/
 8. Add ```@import "./SteamDB/webkit.css";``` to the top of your skin `webkit.css` file
 9. Done, open a steam store page and you should now see two extra buttons at the top, if not then try to install again
 ![Steam store successful](./Images/steam_store.png)
+
+
+## Known issues
+- Last Depots Update, player count and lowest recorded price don't work because the api is blocked by CORS (if anyone knows a way to fix this you're free to open a pr)
