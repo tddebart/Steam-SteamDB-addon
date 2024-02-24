@@ -5,7 +5,7 @@ An addon for the steam client that integrates the SteamDB browser addon (https:/
 1. Install SFP Patcher from [here](https://github.com/PhantomGamers/SFP/releases) for instruction go [here](https://github.com/PhantomGamers/SFP#instructions)
 2. Enable "Inject javascript" in the SFP Patchers settings
 3. Proceed into your skins folder.
-4. Download this addon from [here](https://download-directory.github.io/?url=https://github.com/tddebart/Steam-SteamDB-addon/tree/main/SteamDB-addon)
+4. Download this addon from [here](https://github.com/tddebart/Steam-SteamDB-addon/releases/latest/download/SteamDB-addon.zip)
 
 ### Creating a new skin
 5. Create a new folder in you skins folder
